@@ -1,0 +1,23 @@
+#!/bin/bash
+set -e
+echo "Building sysvinit.."
+echo "Approximate build time: less than 0.1 SBU"
+echo "Required disk space: 2.7 MB"
+
+# 8.76. Sysvinit package contains programs for controlling the startup,
+# running, and shutdown of the system
+tar -xf /sources/sysvinit-*.tar.xz -C /tmp/ \
+    && mv /tmp/sysvinit-* /tmp/sysvinit \
+    && pushd /tmp/sysvinit
+
+# apply a patch that removes several programs installed by other packages,
+# clarifies a message, and fixes a compiler warning
+patch -Np1 -i /sources/sysvinit-3.04-consolidated-1.patch
+
+# compile and install
+make
+make install
+
+# cleanup
+popd \
+    && rm -rf /tmp/sysvinit
