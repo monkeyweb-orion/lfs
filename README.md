@@ -12,7 +12,7 @@ Clone or download this repository and change to the repository folder in the com
 
  
 ```bash
-$ git clone https://github.com/fernandofbp/lfs.git
+$ git clone https://github.com/monkeyweb-orion/lfs.git
 Cloning into 'lfs'...
 ...
 $ cd lfs && ls .
